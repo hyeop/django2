@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+
+{% block con %}
+    {% if user.is_authenticated %}
+        <h2>Hello ! <b>{{ user }}</b></h2>
+    {% else %}
+        <h2>Hello My First Django Project!</h2>
+    {% endif %}
+
+    {% for k,v in d.items %}
+        {{ k }} {{ v }}
+    {% endfor %}
+
+
+
+{% endblock %}
+

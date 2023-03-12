@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block con %}
+
+    <h1><b>번역기</b></h1>
+
+    <form>
+        <textarea name="bf" cols="80" rows="5">{{ bf }}</textarea>
+
+        <br><br>
+        <b>FROM</b>
+        <select name="fr">
+            {% for code, name in ndict.items %}
+                <option value="{{ code }}" {% if fr == code %}selected{% endif %}>{{ name }}</option>
+            {% endfor %}
+        </select>
+        <b>TO</b>
+        <select name="to">
+            {% for code, name in ndict.items %}
+                <option value="{{ code }}" {% if to == code %}selected{% endif %}>{{ name }}</option>
+            {% endfor %}
+        </select>
+        <button>번역</button>
+        <a href="{% url 'trans:index' %}?bf={{af}}&fr={{to}}&to={{fr}}"><button type="button">체인지</button></a>
+        <br><br>
+
+        
+        <textarea cols="80" rows="5" disabled>{{ af }}</textarea>
+    </form>
+{% endblock %}

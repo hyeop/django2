@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block con %}
+    <h2><b>SIGNUP</b></h2>
+
+    <form method="post" enctype="multipart/form-data" name="createForm">
+        {% csrf_token %}
+        <input type="text" name="uname" placeholder="INPUT USERNAME"><br><br>
+        <input type="password" name="upass" placeholder="INPUT PASSWORD"><br><br>
+        <input type="password" name="ckpass" placeholder="INPUT PASSWORD CHECK"><br><br>
+        <input type="number" name="uage" value="0"><br><br>
+        <input type="text" name="umail" placeholder="INPUT EMAIL"><br><br>
+        <input type="file" name="upic"><br><br>
+        <textarea cols="50" rows="5" name="ucomm" placeholder="INPUT COMMENT"></textarea><br><br>
+        <button type="button" onclick="check()">회원가입</button>
+    </form>
+
+    <script>
+        function check(){
+            cf = document.createForm;
+            if(!cf.uname.value){
+                alert("USERNAME 입력좀...");
+            }else if(!cf.upass.value){
+                alert("PASSWORD 입력좀...");
+            }else if(cf.upass.value != cf.ckpass.value){
+                alert("PASSWORD 불일치!!");
+            }else{
+                cf.submit();
+            }
+        }
+    </script>
+
+{% endblock %}

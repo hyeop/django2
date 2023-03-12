@@ -1,0 +1,52 @@
+
+{% if user.is_authenticated %}
+    <a href="{% url 'acc:index' %}" class="menu">홈</a>
+    <a href="{% url 'board:index' %}" class="menu">게시판</a>
+    <a href="{% url 'trans:index' %}?fr=en&to=ko" class="menu">번역기</a>
+    <a href="{% url 'acc:profile' %}" class="menu">프로필</a>
+    <a href="{% url 'acc:logout' %}" class="menu">로그아웃</a>
+
+{% else %}
+    <a href="{% url 'acc:index' %}" class="menu">홈</a>
+    <a href="{% url 'acc:login' %}" class="menu">로그인</a>
+    <a href="{% url 'acc:signup' %}" class="menu">회원가입</a>
+
+{% endif %}
+
+<hr>
+
+{% for i in messages %}
+   <span class="{{i.tags}}"> <b>{{ i.tags }}</b> {{ i.message }} </span> <br>
+{% endfor %}
+
+
+
+{% block con %}
+{% endblock %}
+
+<style>
+
+    .success {
+        color : green;
+    }
+    .info {
+        color : rgb(197, 197, 197);
+    }
+    .warning {
+        color : rgba(255, 230, 0, 0.548);
+    }
+    .error {
+        color : rgb(255, 0, 0);
+    }
+
+    a.menu {
+        text-decoration: none;
+        color: black;
+        font-size: 25px;
+        margin-left: 30px;
+        font-weight: bold;
+    }
+    a.menu:hover{
+        color:red;
+    }
+</style>
